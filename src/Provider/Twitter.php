@@ -3,7 +3,7 @@
 namespace League\OAuth2\Client\Provider;
 
 use League\OAuth2\Client\Provider\AbstractProvider;
-use League\OAuth2\Client\Tool\BearerAuthorizationTrait
+use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
 
 class Twitter extends AbstractProvider
 {
