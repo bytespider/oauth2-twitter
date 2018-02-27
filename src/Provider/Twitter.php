@@ -3,7 +3,11 @@
 namespace League\OAuth2\Client\Provider;
 
 use League\OAuth2\Client\Provider\AbstractProvider;
+use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+use League\OAuth2\Client\Token\AccessToken;
 use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
+
+use Psr\Http\Message\ResponseInterface;
 
 class Twitter extends AbstractProvider
 {
@@ -11,6 +15,7 @@ class Twitter extends AbstractProvider
 
     public function getBaseAuthorizationUrl()
     {
+        return null;
     }
 
     public function getBaseAccessTokenUrl(array $params)
@@ -30,11 +35,17 @@ class Twitter extends AbstractProvider
 
     protected function checkResponse(ResponseInterface $response, $data)
     {
+        // Standard error response format
+        if (!empty($data['errors'])) {
+            $code  = $data['errors'][0]['code'];
+            $error = $data['errors'][0]['message'];
 
+            throw new IdentityProviderException($error, $code, $response);
+        }
     }
 
     protected function createResourceOwner(array $response, AccessToken $token)
     {
-
+        null;
     }
 }
