@@ -51,23 +51,22 @@ class Twitter extends AbstractProvider
         return null;
     }
 
-    public function getStandardSearch(AccessToken $token, $query)
+    public function getStandardSearch(AccessToken $token, $query, $params = [])
     {
-        $response = $this->fetchStandardSearch($token, $query);
+        $response = $this->fetchStandardSearch($token, $query, $params);
         return $response;
     }
 
-    public function getStandardSearchUrl($query, $countPerPage = 25)
+    public function getStandardSearchUrl($query, $params = [])
     {
-        return sprintf('https://api.twitter.com/%s/search/tweets.json?', static::API_VERSION) . http_build_query([
-            'q'     => $query,
-            'count' => $countPerPage,
-        ]);
+        $params = array_merge(['q' => $query], $params);
+
+        return sprintf('https://api.twitter.com/%s/search/tweets.json?', static::API_VERSION) . http_build_query($params);
     }
 
-    protected function fetchStandardSearch(AccessToken $token, $query)
+    protected function fetchStandardSearch(AccessToken $token, $query, $params = [])
     {
-        $url = $this->getStandardSearchUrl($query);
+        $url = $this->getStandardSearchUrl($query, $params);
 
         $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $token);
 
