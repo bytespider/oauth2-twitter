@@ -1,5 +1,6 @@
 {
     "name": "bytespider/oauth2-twitter",
+    "description": "Twitter OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -9,7 +10,7 @@
         }
     ],
     "require": {
-        "league/oauth2-client": "^1.0"
+        "league/oauth2-client": "^2.0"
     },
     "autoload": {
         "psr-4": {
