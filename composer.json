@@ -1,0 +1,12 @@
+{
+    "name": "bytespider/oauth2-twitter",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rob Griffiths",
+            "email": "rob@bytespider.eu"
+        }
+    ],
+    "require": {}
+}
