@@ -8,5 +8,12 @@
             "email": "rob@bytespider.eu"
         }
     ],
-    "require": {}
+    "require": {
+        "league/oauth2-client": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "League\\OAuth2\\Client\\": "src/"
+        }
+    }
 }
