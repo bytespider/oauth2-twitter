@@ -46,6 +46,6 @@ class Twitter extends AbstractProvider
 
     protected function createResourceOwner(array $response, AccessToken $token)
     {
-        null;
+        return null;
     }
 }
