@@ -51,6 +51,34 @@ class Twitter extends AbstractProvider
         return null;
     }
 
+    public function getApplicationRateLimitStatus(AccessToken $token)
+    {
+        $response = $this->fetchApplicationRateLimitStatus($token);
+        return $response;
+    }
+
+    protected function getApplicationRateLimitStatusUrl()
+    {
+        return sprintf('https://api.twitter.com/%s/application/rate_limit_status.json', static::API_VERSION);
+    }
+
+    protected function fetchApplicationRateLimitStatus(AccessToken $token)
+    {
+        $url = $this->getApplicationRateLimitStatusUrl();
+
+        $request = $this->getAuthenticatedRequest(self::METHOD_GET, $url, $token);
+
+        $response = $this->getParsedResponse($request);
+
+        if (false === is_array($response)) {
+            throw new UnexpectedValueException(
+                'Invalid response received from Authorization Server. Expected JSON.'
+            );
+        }
+
+        return $response;
+    }
+
     public function getStandardSearch(AccessToken $token, $query, $params = [])
     {
         $response = $this->fetchStandardSearch($token, $query, $params);
