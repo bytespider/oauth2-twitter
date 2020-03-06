@@ -71,7 +71,7 @@ class Twitter extends AbstractProvider
         $response = $this->getParsedResponse($request);
 
         if (false === is_array($response)) {
-            throw new UnexpectedValueException(
+            throw new \UnexpectedValueException(
                 'Invalid response received from Authorization Server. Expected JSON.'
             );
         }
@@ -101,7 +101,7 @@ class Twitter extends AbstractProvider
         $response = $this->getParsedResponse($request);
 
         if (false === is_array($response)) {
-            throw new UnexpectedValueException(
+            throw new \UnexpectedValueException(
                 'Invalid response received from Authorization Server. Expected JSON.'
             );
         }
